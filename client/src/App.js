@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import User from "./User";
 import Login from "./Login";
+import Logout from "./Logout";
 
 function App() {
   const [user, setUser] = useState([]);
@@ -18,7 +19,11 @@ function App() {
   return (
     <>
       <User user={user} />
-      <Login setUser={setUser}></Login>
+      {!user ? (
+        <Login setUser={setUser}></Login>
+      ) : (
+        <Logout setUser={setUser}></Logout>
+      )}
     </>
   );
 }
