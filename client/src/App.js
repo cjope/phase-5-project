@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import User from "./User";
+import Login from "./Login";
 
 function App() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/test").then((r) => {
+    fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {
@@ -14,7 +15,12 @@ function App() {
     });
   }, []);
 
-  return <User user={user} />;
+  return (
+    <>
+      <User user={user} />
+      <Login setUser={setUser}></Login>
+    </>
+  );
 }
 
 export default App;
