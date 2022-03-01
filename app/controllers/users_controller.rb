@@ -6,7 +6,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_not_found
     end
     
     def show
-      user = User.find(params[:id])
+      user = User.find_by(id: params[:id])
       render json: user
     end
     
@@ -14,8 +14,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_not_found
       user = User.create!(user_params)
       session[:user_id] = user.id
       render json: user, status: :created
-    rescue ActiveRecord::RecordInvalid => invalid
-      render json: { errors: invalid.record.errors.full_messages.first }, status: :unprocessable_entity
     end
     
     def update
@@ -41,7 +39,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_not_found
       end
 
       def render_not_found(invalid)
-        render json: { errors: invalid.record.errrors.full_messages}
+        render json: { errors: invalid.errors.full_messages}
       end
     
 end
