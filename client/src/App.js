@@ -5,7 +5,7 @@ function App() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/me/1").then((r) => {
+    fetch("http://localhost:3000/test").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {

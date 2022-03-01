@@ -5,8 +5,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_not_found
       render json: User.all
     end
     
+    def test
+      render json: User.first
+    end
+
+
+
     def show
-      user = User.find_by(id: params[:id])
+      user = User.find_by(id: session[:user_id])
       render json: user
     end
     
