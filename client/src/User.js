@@ -1,6 +1,6 @@
 function User({ user }) {
   return (
-    <div>
+    <div className="user">
       {user ? (
         <div>
           <h1>Username: {user.username}</h1>

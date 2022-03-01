@@ -24,7 +24,7 @@ function Login({ setUser }) {
   }
 
   return (
-    <div>
+    <div className="login">
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <input
