@@ -23,7 +23,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_not_found
     end
     
     def update
-      user = User.find(params[:id])
+      user = User.find_by(id: session[:user_id])
       user.update!(user_params)
       render json: user, status: :ok
     end
