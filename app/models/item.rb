@@ -15,4 +15,21 @@ class Item < ApplicationRecord
         end  
     end
 
+    def timeframe
+        t = self.ext_type
+        e = self.extension.to_s
+        if t == 1
+            e + " day".pluralize(e)
+        elsif t == 2
+            e + " week".pluralize(e)
+        elsif t == 3
+            e + " month".pluralize(e)
+        elsif t == 4
+            e + " year".pluralize(e)
+        end  
+    end
+
+
+
+
 end
